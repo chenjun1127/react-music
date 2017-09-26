@@ -1,0 +1,9 @@
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+    .components-album{
+        width: 13rem;
+        height:13rem;
+    }
+    .components-player-control{
+        padding: 0 20px;
+    }
+}

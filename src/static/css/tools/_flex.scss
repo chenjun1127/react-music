@@ -1,0 +1,64 @@
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -webkit-flex:  $values;
+    -ms-flex:  $values;
+    flex:  $values;
+}
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+@mixin flexDirection($direction){
+    @if $direction==row{
+        -webkit-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+    }
+    @else if $direction == column{
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+}
+
+// $dir  ==> row,row-reverse,column,column-reverse,initial,inherit
+// $wrap ==> nowrap,wrap,wrap-reverse,initial,inherit
+@mixin flex-flow($dir,$wrap) {
+    -moz-flex-flow:$dir $wrap;
+    -webkit-flex-flow:$dir $wrap;
+    flex-flow:$dir $wrap;
+}
+// 主轴：justify-content: flex-start | flex-end | center | space-between | space-around;
+@mixin justify-content ($mode) {
+    -webkit-box-pack:$mode;
+    -webkit-justify-content:$mode;
+    justify-content:$mode;
+}
+// 交叉轴：align-items: flex-start | flex-end | center | baseline | stretch;
+@mixin align-items($mode) {
+    -webkit-box-align:$mode;
+    -webkit-align-items:$mode;
+    align-items:$mode;
+}
+// 多根轴线: align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+@mixin align-content($mode) {
+    -webkit-align-content:$mode;
+    align-content:$mode;
+}
+//单个项目: align-self: auto | flex-start | flex-end | center | baseline | stretch;
+@mixin align-self($mode) {
+    -webkit-align-self: $mode;
+    align-self: $mode;
+}

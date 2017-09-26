@@ -1,0 +1,492 @@
+@import "reset.css";
+@import "icon-font.css";
+@import "./tools/_flex.scss";
+@import "./tools/_tools.scss";
+@import "input-range.css";
+
+$fontSize: 1rem;
+$d: 0px 5px 10px 15px 20px;
+$baseColor: rgb(233, 32, 61);
+$fontColor: #333;
+$whiteColor: #fff;
+$borderColor: #d9d9d9;
+$grayColor: #f5f5f5;
+* {
+    @include boxSizing;
+}
+
+body {
+    font-size: $fontSize*0.95;
+}
+
+.login {
+    h1 {
+        font-size: $fontSize*1.2;
+    }
+    p {
+        border-bottom: 1px solid $borderColor;
+        padding: nth($d, 4) nth($d, 1);
+        &:last-of-type {
+            margin-bottom: nth($d, 3);
+        }
+    }
+
+    input {
+        border: 1px solid #3c9;
+        background: #3c9;
+        color: #fff;
+        border-radius: 0.25em;
+        padding: nth($d, 4) nth($d, 1);
+        width: 100%;
+    }
+}
+
+%flex-row {
+    @include flexbox;
+    @include justify-content(flex-start);
+    @include align-items(center);
+    @include flexDirection(row);
+}
+
+.input {
+    border: none;
+    background: $whiteColor;
+    width: 100%;
+    font-size: $fontSize*0.95;
+    font-family: 'Lucida Grande', 'Helvetica', 'Microsoft yahei', 'STHeiti';
+}
+
+/*********header***********/
+.header {
+    background: $baseColor;
+    height: $fontSize*3;
+    color: $whiteColor;
+    padding: nth($d, 1) nth($d, 3);
+    @extend %flex-row;
+    .cityName {
+        padding-left: nth($d, 1);
+        a {
+            @extend %flex-row;
+            span {
+                color: $whiteColor;
+            }
+            i {
+                font-size: $fontSize*1.5;
+                color: $whiteColor;
+                margin-top: 2px;
+            }
+        }
+
+    }
+    .searchBar {
+        @include flex(1);
+        padding: 0 $fontSize;
+        .searchInput {
+            @extend %flex-row;
+            border-radius: 1rem;
+            background: $whiteColor;
+            padding: 0 14px 0 12px;
+            overflow: hidden;
+            .input-search {
+                height: 32px;
+                padding-left: 5px;
+            }
+            i {
+                color: $fontColor;
+                font-size: $fontSize*1.2;
+            }
+        }
+    }
+    .personCenter {
+        text-align: right;
+        padding-right: nth($d, 1);
+        i {
+            font-size: $fontSize*2;
+            color: $whiteColor;
+        }
+    }
+    .headerBack {
+        @extend %flex-row;
+        width: 10%;
+        i {
+            font-size: $fontSize*2;
+            margin-top: 2px;
+        }
+    }
+    .headerTitle {
+        @include flex(1);
+        text-align: center;
+    }
+    .headerRight {
+        width: 10%;
+    }
+}
+
+/********city********/
+.currentCity {
+    .cityNameTitle {
+        padding: nth($d, 4);
+    }
+    .cityNameInfo {
+        span {
+            margin: 0 nth($d, 4);
+        }
+    }
+    .cityList li {
+        padding-bottom: 0
+    }
+}
+
+.cityLi {
+    border: 1px solid $borderColor;
+    padding: nth($d, 3) nth($d, 1);
+    text-align: center;
+    width: 25%;
+    display: inline-block;
+}
+
+.cityList {
+    padding-right: nth($d, 4);
+    @extend %flex-row;
+    @include flex-flow(row, wrap);
+    li {
+        padding-bottom: nth($d, 4);
+        width: 25%;
+        padding-left: nth($d, 4);
+        span {
+            display: inline-block;
+            width: 100%;
+        }
+
+    }
+}
+
+/**********轮播样式***********/
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+.slick-dots {
+    bottom: nth($d, 3);
+}
+
+.slick-dots li button:before {
+    color: #fff;
+    opacity: 0.25;
+}
+
+.slick-dots li.slick-active button:before {
+    color: red;
+}
+
+/************歌单***************/
+.title {
+    @extend %flex-row;
+    @include justify-content(space-between);
+    border-bottom: 1px solid $borderColor;
+    padding: nth($d, 3) nth($d, 1);
+    margin: 0 8px;
+    i {
+        font-size: $fontSize*1.5;
+    }
+    a {
+        color: #888;
+    }
+}
+
+.songPlay {
+    @include clearfix;
+    padding: nth($d, 2)-1;
+    li {
+        width: percentage(100/3/100);
+        padding: 4px;
+        @include float(left);
+        a {
+            position: relative;
+            display: block;
+
+            width: 100%;
+            height: 100%;
+            p {
+                padding: nth($d, 2);
+                overflow: hidden;
+                height: $fontSize*2.8;
+                word-break: break-all;
+                font-size: $fontSize*0.9;
+            }
+            .albumTips {
+                position: absolute;
+                padding: 4px nth($d, 2);
+                color: $whiteColor;
+                font-size: $fontSize*0.7;
+                left: 0;
+                top: 0;
+                width: 100%;
+                @extend %flex-row;
+                @include justify-content(flex-end);
+                i {
+                    margin-right: 3px;
+                    font-size: $fontSize*0.8;
+                    margin-top: 2px;
+                }
+            }
+        }
+
+    }
+}
+
+.album-bg {
+    height: 10rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    filter: blur(60px);
+    position: relative;
+    z-index: -1;
+}
+
+.album-info {
+    @extend %flex-row;
+    padding: nth($d, 3);
+    width: 100%;
+    height: 10rem;
+    margin-top: -10.0rem;
+    .album-img {
+        width: $fontSize*8.5;
+        margin: 0;
+    }
+    .album-text {
+        padding-left: nth($d, 3);
+        p {
+            line-height: 1.7rem;
+        }
+    }
+}
+
+.album-list {
+    background: $whiteColor;
+    padding: nth($d, 3);
+    padding-top: 0;
+    ul {
+        @include flexbox;
+        @include flexDirection(column);
+        li {
+            @extend %flex-row;
+            @include justify-content(space-between);
+            border-bottom: 1px solid $borderColor;
+            padding: nth($d, 3) 0;
+            .album-remark {
+                font-size: $fontSize*0.8;
+                color: #888;
+                padding-top: nth($d, 2);
+            }
+            i {
+                color: #888;
+                font-size: $fontSize;
+            }
+        }
+    }
+}
+
+/************音乐播放************/
+.container-full {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.container-bg {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.container-play {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    @include flexbox;
+    @include flexDirection(column);
+    .container-inner {
+        @include flex(1);
+        @include flexbox;
+        @include flexDirection(column);
+        @include justify-content(space-around);
+        .player-title {
+            padding: 0 0 20px 0;
+            .songName, .singerName {
+                text-align: center;
+                color: $whiteColor;
+            }
+            .songName {
+                font-size: $fontSize*1.5;
+                padding: nth($d, 2) 0;
+            }
+        }
+        .sliderContainer {
+            @include flex(1);
+            .slick-list {
+                height: 100%;
+                .slick-track {
+                    height: 100%;
+                }
+            }
+            .content-player {
+                @extend %flex-row;
+                @include justify-content(center);
+            }
+            .slick-dots li.slick-active button:before {
+                color: #fff;
+            }
+            .slick-dots {
+                bottom: -25px;
+            }
+            .lyric {
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                @include flex(1);
+                @include flexbox;
+                @include flexDirection(column);
+                @include justify-content(space-around);
+                .originLyric {
+                    padding: nth($d, 3) nth($d, 5);
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    @include transition(all 0.25s ease 0.05s);
+                    left: 0;
+                    top: 0;
+                    .line {
+                        text-align: center;
+                        @include verticalCenter(42px);
+                        color: rgba(255, 255, 255, 0.9);
+                    }
+                    .on {
+                        color: $baseColor;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+/*********旋转唱片*********/
+.components-album {
+    @include horizontal-center;
+
+    border-radius: 50%;
+    background: rgba(250, 250, 250, 0.7);
+    width: 16rem;
+    height: 16rem;
+    padding: 5px;
+    @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.4));
+    .ablum-pic {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        animation: rotate-the-object 9.5s infinite linear;
+        @include keyframes(rotate-the-object) {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .paused {
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+    .playing {
+        -webkit-animation-play-state: running;
+        animation-play-state: running;
+    }
+}
+
+.components-player-control {
+    width: 100%;
+    padding: 15px 20px;
+    padding-bottom: 30px;
+    height: 30%;
+    @include flexbox;
+    @include flexDirection(column);
+    @include justify-content(space-around);
+
+    .player-time {
+        font-family: 'PingFang SC';
+        @include flexbox;
+        @include justify-content(center);
+        @include align-items(center);
+        .time_left {
+            padding-top: 10px;
+            padding-right: 10px;
+            color: $whiteColor;
+        }
+        .time_right {
+            padding-top: 10px;
+            padding-left: 10px;
+            text-align: right;
+            color: $whiteColor;
+        }
+        .player-range {
+            @include flex(1);
+        }
+    }
+    .player-btn {
+        @extend .player-time;
+        @include justify-content(space-between);
+        i {
+            color: #fff;
+            font-size: $fontSize*3.5;
+        }
+
+    }
+}
+
+/*********当前播放音乐列表弹层*************/
+.modal-music-list{
+    position: absolute;
+    left:0;bottom: 0;
+    width: 100%;
+    height:60%;
+    background: rgba(255,255,255,1);
+    z-index: 1001;
+    display: none;
+    .list-title{
+        padding: nth($d,4) ;
+        border-bottom: 1px solid $borderColor;
+        @extend %flex-row;
+        @include justify-content(space-between);
+        i{
+            font-size: $fontSize*1.2;
+        }
+        em{
+            font-style: normal;
+            color: $baseColor;
+        }
+    }
+    .list-ul{
+        li{
+            @extend .list-title;
+            padding: nth($d,4) 0;
+            margin: 0 nth($d,4);
+            i {
+                color: #888;
+                font-size: $fontSize;
+            }
+            .active{
+                color: $baseColor;
+            }
+        }
+
+    }
+}
