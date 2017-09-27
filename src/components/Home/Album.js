@@ -2,7 +2,7 @@
  * Created by 0easy-23 on 2017/9/14.
  */
 import React, {Component} from 'react';
-import Header from '../../components/Common/Header';
+import Header from '../Common/Header';
 import request from '../../util/request';
 import API from '../../util/API';
 import {Link} from 'react-router-dom';
@@ -19,7 +19,7 @@ export default class extends Component {
     }
 
     fetchData() {
-        request.get(`kugou/${API.song_playlist}/${this.props.match.params.id}?json=true`).then(res => {
+        request.get(`/kugou/${API.song_playlist}/${this.props.match.params.id}?json=true`).then(res => {
             this.setState({
                 albumInfo: res.info,
                 albumList: res.list,
@@ -51,7 +51,7 @@ export default class extends Component {
                                     this.state.albumList.list.info.map((ele,index)=>{
                                         return(
                                             <li key={index}>
-                                                <Link to={'/play/'+ele.hash}>
+                                                <Link to={'/play/#'+ele.hash}>
                                                     <span>{ele.filename}</span>
                                                     <p className="album-remark">{ele.remark}</p>
                                                 </Link>

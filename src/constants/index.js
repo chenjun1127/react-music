@@ -13,7 +13,6 @@ export const MUSIC_AUDIO = 'MUSIC_AUDIO';
 export const MUSIC_UPDATELYRICS = 'MUSIC_UPDATELYRICS';
 /************rank***********************/
 export const SAVE_RANKLIST = 'SAVE_RANKLIST';
-export const SAVE_MUSIC = 'SAVE_MUSIC';
 /***********loading显示与隐藏************/
 export const SPIN_SHOW = 'SPIN_SHOW';
 export const SPIN_HIDE = 'SPIN_HIDE';

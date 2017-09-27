@@ -2,14 +2,13 @@
  * Created by 0easy-23 on 2017/9/20.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 export default class extends Component {
     close() {
         this.props.changeShowModal({modal: false})
     }
     playThisMusic(e){
         this.props.musicInfoActions.getMusic({hash:e.song.hash});
-        this.props.history.replace(e.song.hash);
+        this.props.history.replace('#' + e.song.hash);
         this.props.musicInfoActions.fetchMusic(e.song.hash);
     }
     render() {
@@ -17,7 +16,7 @@ export default class extends Component {
         const lists = musicList.length > 0 && musicList.map((ele, index) => {
             return (
                 <li key={index}>
-                    <span onClick={this.playThisMusic.bind(this,ele)} className={this.props.hash === ele.song.hash ? 'active' : ''}>{ele.song.songName} - {ele.song.singerName}</span>
+                    <span onClick={this.playThisMusic.bind(this,ele)} className={this.props.music.hash === ele.song.hash ? 'active' : ''}>{ele.song.songName} - {ele.song.singerName}</span>
                     <i className="icon-favorite"></i>
                 </li>
             )

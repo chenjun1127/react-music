@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Rank from '../../components/TabsPage/Rank';
+import Rank from '../../components/Rank/Rank';
 import * as DataActions from '../../actions/rank';
+import * as musicInfoAction from '../../actions/music';
 import {bindActionCreators} from 'redux';
 const mapStateToProps = (state) => {
-    return {
-        rankList:state.rankList
-    }
+    return state;
 };
 
 // const mapDispatchToProps = dispatch => ({
@@ -16,7 +14,8 @@ const mapStateToProps = (state) => {
 /********************或*****************/
 const mapDispatchToProps = (dispatch) => {
     return {
-        rankDataActions: bindActionCreators(DataActions, dispatch)
+        rankDataActions: bindActionCreators(DataActions, dispatch),
+        musicInfoActions: bindActionCreators(musicInfoAction, dispatch)
     }
 };
 

@@ -11,7 +11,7 @@ import localStorage from '../../util/localStorage';
 import {formatTime} from '../../util/tools';
 import Slider from 'react-slick';
 import '../../static/css/media-response.css';
-import MusicList from '../../containers/MusicList/MusicList';
+import MusicList from '../../containers/Home/MusicList';
 export default class Player extends Component {
     static defaultProps = {
         background: '-webkit-linear-gradient(#e9203d, #e9203d) no-repeat, #ddd',
@@ -39,9 +39,13 @@ export default class Player extends Component {
     }
 
     componentDidMount() {
-        this.props.musicInfoActions.getMusic({hash: this.props.match.params.id});
-        this.props.musicInfoActions.fetchMusic(this.props.match.params.id);
-        this.props.musicInfoActions.control({playing: true});
+        // const hash = this.props.match.params.id;
+        const hash = this.props.location.hash.replace(/#/,'');
+        if (hash && hash !== 'null') {
+            this.props.musicInfoActions.getMusic({hash: hash});
+            this.props.musicInfoActions.fetchMusic(hash);
+            this.props.musicInfoActions.control({playing: true});
+        }
     }
 
     playPause() {
@@ -93,7 +97,7 @@ export default class Player extends Component {
         let currentIndex = index - 1 < 0 ? musicList.length - 1 : --index;
         const currentSong = musicList[currentIndex].song;
         this.props.musicInfoActions.getMusic({hash: currentSong.hash});
-        this.props.history.replace(currentSong.hash);
+        this.props.history.replace('#' + currentSong.hash);
         this.props.musicInfoActions.fetchMusic(currentSong.hash);
     }
     playNext(){
@@ -110,7 +114,7 @@ export default class Player extends Component {
         let currentIndex = index + 1 > musicList.length - 1 ? 0 : ++index;
         const currentSong = musicList[currentIndex].song;
         this.props.musicInfoActions.getMusic({hash: currentSong.hash});
-        this.props.history.replace(currentSong.hash);
+        this.props.history.replace('#' + currentSong.hash);
         this.props.musicInfoActions.fetchMusic(currentSong.hash);
     }
 
@@ -172,7 +176,7 @@ export default class Player extends Component {
                                     </div>
                                     <div className="player-btn">
                                         <i className="icon-prev" onClick={this.playPrev}></i>
-                                        <i onClick={this.playPause} className={this.props.control.playing ? 'icon-play' : 'icon-pause'}></i>
+                                        <i onClick={this.playPause} className={this.props.control.playing ? 'icon-pause' : 'icon-play'}></i>
                                         <i className="icon-next" onClick={this.playNext}></i>
                                         <i className="icon-list" onClick={this.showMusicList}></i>
                                     </div>
@@ -184,7 +188,11 @@ export default class Player extends Component {
                     </div>
                 )
             }
-        } else {
+        } else if(!this.props.music.hash || this.props.music.hash === 'null'){
+            return (
+                <div>当前无音乐...</div>
+            )
+        }else {
             return (
                 <div>数据加载中...</div>
             )

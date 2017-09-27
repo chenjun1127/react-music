@@ -7,7 +7,7 @@ import request from '../../util/request';
 import 'babel-polyfill';
 import Slider from 'react-slick';
 import API from '../../util/API';
-import SongPlayList from '../../containers/TabsPage/SongPlayList';
+import SongPlayList from '../../containers/Home/SongPlayList';
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ export default class extends Component {
 
     async fetchData() {
         try {
-            let response_new_song = await request.asyncGet(`kugou/${API.new_song}`);
+            let response_new_song = await request.asyncGet(`/kugou/${API.new_song}`);
             let data_new_song = await response_new_song.json();
             this.setState({
                 banner: data_new_song.banner,
@@ -60,7 +60,7 @@ export default class extends Component {
                         </Slider>
                         <div className="title">
                             <span>推荐歌单</span>
-                            <Link to="album">
+                            <Link to="/album">
                                 <i className="icon-keyboard_arrow_right"></i>
                             </Link>
                         </div>

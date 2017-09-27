@@ -20,7 +20,7 @@ export default class extends Component {
 
     async fetchData() {
         try {
-            let response_song_play = await request.asyncGet(`kugou/${API.song_play}`);
+            let response_song_play = await request.asyncGet(`/kugou/${API.song_play}`);
             let data_song_play = await response_song_play.json();
             this.props.albumsActions.updateMusic(data_song_play.plist.list);
             this.setState({
@@ -37,7 +37,7 @@ export default class extends Component {
                 if (index < 9) {
                     return (
                         <li key={index}>
-                            <Link to={`album/${ele.specialid}`} >
+                            <Link to={`/album/${ele.specialid}`} >
                                 <img src={ele.imgurl.replace(/\{size\}/g,400)}/>
                                 <p>{ele.specialname}</p>
                                 <div className="albumTips">

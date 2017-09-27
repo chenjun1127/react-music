@@ -4,7 +4,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as musicInfoAction from '../../actions/music';
-import MusicList from '../../components/MusicList/MusicList';
+import MusicList from '../../components/Home/MusicList';
 
 const mapStateToProps = (state) => {
     return {

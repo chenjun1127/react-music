@@ -4,7 +4,7 @@
 const API = {
     new_song: '?json=true',
     song_play: 'plist/index&json=true',                     // 歌单
-    song_playlist: 'plist/list/',							// plist/list/125032?json=true
+    song_playlist: 'plist/list',							// plist/list/125032?json=true
     rank: 'rank/list&json=true',
     rankid: 'rank/info/', 									// rank/info/?rankid=8888&page=1&json=true'
     singer_category: 'singer/class&json=true',

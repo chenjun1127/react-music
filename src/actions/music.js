@@ -4,7 +4,7 @@
 import * as actionTypes from '../constants/index';
 import API from '../util/API';
 import request from '../util/request';
-import {spin_hide, spin_show} from './spin';
+import {spin_show} from './spin';
 import {parseLyric} from '../util/tools';
 // 获取歌单
 const updateMusic = (data) => {
@@ -63,21 +63,14 @@ const updateLyrics = (data) => {
         data
     }
 };
-// 保存音乐
-const saveMusic = (data) => {
-    return {
-        type: actionTypes.SAVE_MUSIC,
-        data
-    }
-};
 // 请求数据
 const fetchMusic = (id) => {
     return async dispatch => {
         dispatch(spin_show());
         try {
-            let res_song = await request.asyncGet(`kugou/${API.song_detail}?cmd=playInfo&hash=${id}`);
+            let res_song = await request.asyncGet(`/kugou/${API.song_detail}?cmd=playInfo&hash=${id}`);
             let res_song_detail = await res_song.json();
-            let res_lyrics = await request.asyncGet(`kugou/${API.song_lyrics}?cmd=100&hash=${id}&timelength=${res_song_detail.timeLength}`);
+            let res_lyrics = await request.asyncGet(`/kugou/${API.song_lyrics}?cmd=100&hash=${id}&timelength=${res_song_detail.timeLength}`);
             let res_lyrics_detail = await res_lyrics.text();
             let musicObj = {song: res_song_detail, lyrics: parseLyric(res_lyrics_detail)};
             dispatch(addMusic(musicObj));
@@ -86,4 +79,4 @@ const fetchMusic = (id) => {
         }
     }
 };
-export {updateMusic, addMusic, removeMusic, getMusic, control, updateProgress, audioObj, updateLyrics, saveMusic, fetchMusic};
+export {updateMusic, addMusic, removeMusic, getMusic, control, updateProgress, audioObj, updateLyrics, fetchMusic};

@@ -3,15 +3,13 @@
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import classNames from 'classnames';
 export default class extends Component {
     render() {
         return (
             <div className="header">
                 <div className="cityName">
-                    <Link to="city">
-                        <span>{this.props.cityName}</span>
-                        <i className="icon-keyboard_arrow_down"></i>
-                    </Link>
+                    <Link to="/login"><i className="icon-user-circle-o"></i></Link>
                 </div>
                 <div className="searchBar">
                     <div className="searchInput">
@@ -19,8 +17,18 @@ export default class extends Component {
                         <input type="text" className="input input-search" placeholder="请输入关键字"/>
                     </div>
                 </div>
-                <div className="personCenter">
-                    <Link to="login"><i className="icon-user-circle-o"></i></Link>
+                <div className="music-icon">
+                    <Link to={this.props.music.hash && this.props.music.hash && this.props.control.playing !== 'null' ? `/play/#${this.props.music.hash}` : '/play/#null'}>
+                        <div className="music-icon-animate ">
+                            {
+                                ['one', 'two', 'three', 'four'].map((ele, i) => {
+                                    return (
+                                        <span key={i} className={classNames(ele, this.props.music.hash && this.props.music.hash !== 'null' && this.props.control.playing ? 'playing' : 'paused')}></span>
+                                    )
+                                })
+                            }
+                        </div>
+                    </Link>
                 </div>
             </div>
         )

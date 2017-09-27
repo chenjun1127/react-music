@@ -4,12 +4,14 @@
 import React, {Component} from 'react'
 import ReactPlayer from 'react-player';
 import localStorage from '../../util/localStorage';
-export default class extends Component {
+
+class Player extends Component {
     constructor(props) {
         super(props);
         this.onDuration = this.onDuration.bind(this);
         this.onProgress = this.onProgress.bind(this);
         this.getCurrentSong = this.getCurrentSong.bind(this);
+        this.onEnd = this.onEnd.bind(this);
     }
 
     onDuration(e) {
@@ -41,7 +43,29 @@ export default class extends Component {
             }
         }
     }
+    onEnd(e){
+        // 播放完毕播放下一首
+        const musicList = this.props.musicList;
+        const hash = this.props.music.hash;
+        if(musicList.length > 1){
+            let index = 0;
+            for (let i = 0; i < musicList.length; i++) {
+                if (musicList[i].song.hash === hash) {
+                    index = i;
+                }
+            }
+            let currentIndex = index + 1 > musicList.length - 1 ? 0 : ++index;
+            const currentSong = musicList[currentIndex].song;
+            this.props.musicInfoActions.getMusic({hash: currentSong.hash});
+            const reg = new RegExp(window.location.href.split('#')[1]);
+            const url = window.location.href.replace(reg, currentSong.hash);
+            window.location.replace(url);
+            this.props.musicInfoActions.fetchMusic(currentSong.hash);
+        }else{
+            this.props.musicInfoActions.control({playing: false});
+        }
 
+    }
     componentDidMount() {
         this.props.musicInfoActions.audioObj({player: this.player});
     }
@@ -52,8 +76,9 @@ export default class extends Component {
             <div style={{display: 'none'}}>
                 <ReactPlayer url={currentSong ? currentSong.song.url : null} controls playing={this.props.control.playing} ref={player => {
                     this.player = player
-                }} onProgress={this.onProgress} onDuration={this.onDuration}/>
+                }} onProgress={this.onProgress} onDuration={this.onDuration} onEnded={this.onEnd}/>
             </div>
         )
     }
 }
+export default Player;
