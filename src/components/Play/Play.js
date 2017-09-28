@@ -4,14 +4,13 @@
 import React, {Component} from 'react';
 import 'babel-polyfill';
 import classnames from 'classnames';
-import API from '../../util/API';
-import request from '../../util/request';
 import Header from '../../components/Common/Header';
 import localStorage from '../../util/localStorage';
 import {formatTime} from '../../util/tools';
 import Slider from 'react-slick';
 import '../../static/css/media-response.css';
 import MusicList from '../../containers/Home/MusicList';
+import Loading from '../../components/Common/Loading';
 export default class Player extends Component {
     static defaultProps = {
         background: '-webkit-linear-gradient(#e9203d, #e9203d) no-repeat, #ddd',
@@ -194,7 +193,7 @@ export default class Player extends Component {
             )
         }else {
             return (
-                <div>数据加载中...</div>
+                <Loading/>
             )
         }
     }

@@ -51,6 +51,13 @@
     -o-transition: $args;
     transition: $args;
 }
+@mixin animation($args...) {
+    -webkit-animation: $args;
+    -moz-animation: $args;
+    -ms-animation: $args;
+    -o-animation: $args;
+    animation: $args;
+}
 
 // rotate
 @mixin rotate($deg) {

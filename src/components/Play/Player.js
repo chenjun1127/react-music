@@ -57,9 +57,11 @@ class Player extends Component {
             let currentIndex = index + 1 > musicList.length - 1 ? 0 : ++index;
             const currentSong = musicList[currentIndex].song;
             this.props.musicInfoActions.getMusic({hash: currentSong.hash});
-            const reg = new RegExp(window.location.href.split('#')[1]);
-            const url = window.location.href.replace(reg, currentSong.hash);
-            window.location.replace(url);
+            if (window.location.pathname === '/play/') {
+                const reg = new RegExp(window.location.href.split('#')[1]);
+                const url = window.location.href.replace(reg, currentSong.hash);
+                window.location.replace(url);
+            }
             this.props.musicInfoActions.fetchMusic(currentSong.hash);
         }else{
             this.props.musicInfoActions.control({playing: false});

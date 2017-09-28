@@ -28,5 +28,9 @@ const formatTime = (timeTemp) => {
     let s = Math.floor(timeTemp % 60);
     return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
 };
+// 时间戳转时间格式
+const getLocalTime = (nS) => {
+    return new Date(parseInt(nS) * 1000).toLocaleString('chinese', {hour12: false}).replace(/\//g, '-');
+};
 
-export {parseLyric, formatTime};
+export {parseLyric, formatTime, getLocalTime};

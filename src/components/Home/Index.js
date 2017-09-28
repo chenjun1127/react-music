@@ -10,7 +10,7 @@ export default class extends Component {
         return (
             <div className="container">
                 <HomeHeader {...this.props}/>
-                <Nav/>
+                <Nav {...this.props}/>
                 <Recommend/>
             </div>
         )

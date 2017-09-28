@@ -8,6 +8,7 @@ import 'babel-polyfill';
 import Slider from 'react-slick';
 import API from '../../util/API';
 import SongPlayList from '../../containers/Home/SongPlayList';
+import Loading from '../../components/Common/Loading';
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -70,7 +71,7 @@ export default class extends Component {
             )
         } else {
             return (
-                <div className="loading">加载数据中...</div>
+                <Loading/>
             )
         }
     }

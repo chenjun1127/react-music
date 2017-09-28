@@ -8,7 +8,8 @@ export default class Nav extends Component {
         return (
             <ul className="nav">
                 {
-                    this.props.tabs.map((item, i) => (<li key={i}><Link to={`${item.path}`}>{item.text}</Link></li>))
+                    this.props.tabs.map((item, i) => (
+                        <li className={this.props.location.pathname === item.path ? 'active' : ''} key={i}><Link to={`${item.path}`}>{item.text}</Link></li>))
                 }
             </ul>
         )

@@ -1,5 +1,5 @@
 /**
- * Created by 0easy-23 on 2017/9/7.
+ * Created by 0easy-23 on 2017/9/28.
  */
 import React, {Component} from 'react';
 import API from '../../util/API';
@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 import HomeHeader from '../../components/Home/HomeHeader';
 import Nav from '../../components/Home/Nav';
 import Loading from '../../components/Common/Loading';
+
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -17,10 +18,10 @@ export default class extends Component {
     }
 
     componentDidMount() {
-        request.asyncGet(`/kugou/${API.rank}`).then(res => res.json()).then(resData => {
-            this.props.rankDataActions.saveRankList(resData);
+        request.asyncGet(`/kugou/${API.singer_category}`).then(res => res.json()).then(resData => {
             this.setState({
-                loaded: true
+                loaded: true,
+                artist: resData.list,
             })
         }).catch(err => {
             console.log('Error:' + err);
@@ -33,16 +34,13 @@ export default class extends Component {
                 <HomeHeader {...this.props}/>
                 <Nav {...this.props}/>
                 {this.state.loaded ?
-                    <ul className="rankList">
+                    <ul className="artistList">
                         {
-                            this.props.rankList.rank.list.map((ele) => {
+                            this.state.artist.map((ele) => {
                                 return (
-                                    <li key={ele.rankid}>
-                                        <Link to={`/rank/list/${ele.rankid}`}>
-                                            <img src={ele.imgurl.replace(/\{size\}/g, 400)}/>
-                                            <div className="rank_right">
-                                                <p>{ele.rankname}</p>
-                                            </div>
+                                    <li key={ele.classid}>
+                                        <Link to={`/artist/list/${ele.classid}`}>
+                                            <span>{ele.classname}</span>
                                             <i className="icon-keyboard_arrow_right"></i>
                                         </Link>
                                     </li>
@@ -52,9 +50,7 @@ export default class extends Component {
                     </ul> :
                     <Loading/>
                 }
-
             </div>
         )
     }
 }
-
