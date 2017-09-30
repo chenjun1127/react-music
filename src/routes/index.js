@@ -16,7 +16,8 @@ import RankList from '../containers/Rank/RankList';
 import Artist from '../containers/Artist/Artist';
 import ArtistList from '../containers/Artist/ArtistList';
 import ArtistSinger from '../containers/Artist/ArtistSinger';
-import MV from '../containers/MV/MV';
+import New from '../containers/New/New';
+import Search from '../containers/Search/Search';
 const Routes = () => (
     <div className="app">
         <Player/>
@@ -32,7 +33,8 @@ const Routes = () => (
                 <Route path="/artist" exact component={Artist}/>
                 <Route path="/artist/list/:id" exact component={ArtistList}/>
                 <Route path="/artist/list/singer/:id" component={ArtistSinger}/>
-                <Route path="/mv" component={MV}/>
+                <Route path="/new" component={New}/>
+                <Route path="/search" component={Search}/>
                 <Redirect from="/undefined" to={{pathname: '/', search: '?mold=redirect'}}/>
             </Switch>
         </Router>

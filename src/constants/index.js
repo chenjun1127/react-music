@@ -16,5 +16,8 @@ export const SAVE_RANKLIST = 'SAVE_RANKLIST';
 /***********loading显示与隐藏************/
 export const SPIN_SHOW = 'SPIN_SHOW';
 export const SPIN_HIDE = 'SPIN_HIDE';
+/*********** search *******************/
+export const SAVE_SEARCH_HOT = 'SAVE_SEARCH_HOT';
+export const SAVE_SEARCH_RESULT = 'SAVE_SEARCH_RESULT';
 
 

@@ -11,7 +11,9 @@ const API = {
     singer_list: 'singer/list/', 							// singer/list/88?json=true
     singer_detail: 'singer/info/', 							// singer/info/3060&json=true
     song_detail: 'app/i/getSongInfo.php', 					// ?cmd=playInfo&hash=CB7EE97F4CC11C4EA7A1FA4B516A5D97
-    song_lyrics:'app/i/krc.php'                             // ?cmd=100&hash=2B8DA604EDFF833B06AD9DCEC3F8F28C&timelength=222000
+    song_lyrics:'app/i/krc.php',                            // ?cmd=100&hash=2B8DA604EDFF833B06AD9DCEC3F8F28C&timelength=222000
+    searchHot: 'api/v3/search/hot',
+    searchResult: 'api/v3/search/song',
 };
 
 export default API;

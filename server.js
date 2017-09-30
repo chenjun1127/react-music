@@ -15,9 +15,18 @@ new WebpackDevServer(webpack(config), {
     proxy: {
         '/kugou': {
             target: 'http://m.kugou.com/',
-            // secure: false,
             changeOrigin:true,
             pathRewrite: {"^/kugou" : ""}
+        },
+        "/yy_kugou": {
+            target: "http://www.kugou.com/yy/",
+            changeOrigin: true,
+            pathRewrite: {"^/yy_kugou" : ""}
+        },
+        "/mobilecdn": {
+            target: "http://mobilecdn.kugou.com",
+            changeOrigin: true,
+            pathRewrite: {"^/mobilecdn" : ""}
         }
     }
 }).listen(3000, 'localhost', function(err) {

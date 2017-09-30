@@ -99,7 +99,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            title: 'react-music-player',
+            title: 'react-music',
+            favicon: './src/static/images/favicon.ico',
             template: './templates/index.html',
             filename: 'index.html',
             inject: 'body'

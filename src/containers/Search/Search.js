@@ -1,9 +1,8 @@
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import Search from '../../components/Search/Search';
 import * as musicInfoAction from '../../actions/music';
 import * as searchAction from '../../actions/search';
-import Index from '../../components/Home/Index';
-
+import {bindActionCreators} from 'redux';
 const mapStateToProps = (state) => {
     return state;
 };
@@ -13,7 +12,5 @@ const mapDispatchToProps = (dispatch) => {
         searchActions: bindActionCreators(searchAction, dispatch)
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
 
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

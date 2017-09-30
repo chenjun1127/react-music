@@ -7,4 +7,4 @@ const rankList = (state = {}, action) => {
             return state;
     }
 };
-export {rankList}
+export {rankList};

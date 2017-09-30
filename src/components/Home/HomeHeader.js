@@ -5,6 +5,10 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
 export default class extends Component {
+    onFocus() {
+        this.props.history.push({pathname:'/search'})
+    }
+
     render() {
         return (
             <div className="header">
@@ -14,7 +18,7 @@ export default class extends Component {
                 <div className="searchBar">
                     <div className="searchInput">
                         <i className="icon-search"></i>
-                        <input type="text" className="input input-search" placeholder="请输入关键字"/>
+                        <input type="text" className="input input-search" onFocus={this.onFocus.bind(this)} placeholder="请输入关键字"/>
                     </div>
                 </div>
                 <div className="music-icon">

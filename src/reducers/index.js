@@ -4,6 +4,7 @@ import userInfo from './userInfo';
 import {albums, musicList, music, control, progress, audio,lyricsUpdate} from './music';
 import {rankList} from './rank';
 import {spin} from './spin';
+import {hotList,resultList} from './search';
 export default combineReducers({
     store,
     userInfo,
@@ -15,5 +16,7 @@ export default combineReducers({
     audio,
     lyricsUpdate,
     rankList,
-    spin
+    spin,
+    hotList,
+    resultList
 })

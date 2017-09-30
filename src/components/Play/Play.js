@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import 'babel-polyfill';
 import classnames from 'classnames';
 import Header from '../../components/Common/Header';
-import localStorage from '../../util/localStorage';
+import * as localStore from '../../util/localStorage';
 import {formatTime} from '../../util/tools';
 import Slider from 'react-slick';
 import '../../static/css/media-response.css';
@@ -123,7 +123,7 @@ export default class Player extends Component {
             const currentSongLyrics = this.getCurrentSong().lyrics;
             const albumImg = currentSong.imgUrl.replace(/\{size\}/g, 400);
             const currentTime = formatTime(this.props.progress.currentTime);
-            const duration = formatTime(localStorage.getItem('duration'));
+            const duration = formatTime(localStore.getItem('duration'));
             const percentage = this.props.progress.percentage;
             const rangeStyle = percentage * 100 + '%' + ' ' + '100%';
             if(currentSong.error){

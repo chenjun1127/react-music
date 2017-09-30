@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import ReactPlayer from 'react-player';
-import localStorage from '../../util/localStorage';
+import * as localStore from '../../util/localStorage';
 
 class Player extends Component {
     constructor(props) {
@@ -15,10 +15,10 @@ class Player extends Component {
     }
 
     onDuration(e) {
-        localStorage.setItem('duration', e);
+        localStore.setItem('duration', e);
     }
 
-    getCurrentSong(){
+    getCurrentSong() {
         const musicList = this.props.musicList;
         const hash = this.props.music.hash;
         let currentSong = null;
@@ -36,18 +36,19 @@ class Player extends Component {
         const currentLyrics = this.getCurrentSong().lyrics;
         this.props.musicInfoActions.updateProgress({currentTime: state.playedSeconds, percentage: state.played});
         for (let i = 0, l = currentLyrics.length; i < l; i++) {
-            if (state.playedSeconds  > currentLyrics[i][0]) {
+            if (state.playedSeconds > currentLyrics[i][0]) {
                 //显示到页面
                 // lyricContainer.textContent = that.lyric[i][1];
-                this.props.musicInfoActions.updateLyrics({updateLyrics:currentLyrics[i][1],time:currentLyrics[i][0],index:i});
+                this.props.musicInfoActions.updateLyrics({updateLyrics: currentLyrics[i][1], time: currentLyrics[i][0], index: i});
             }
         }
     }
-    onEnd(e){
+
+    onEnd(e) {
         // 播放完毕播放下一首
         const musicList = this.props.musicList;
         const hash = this.props.music.hash;
-        if(musicList.length > 1){
+        if (musicList.length > 1) {
             let index = 0;
             for (let i = 0; i < musicList.length; i++) {
                 if (musicList[i].song.hash === hash) {
@@ -63,11 +64,12 @@ class Player extends Component {
                 window.location.replace(url);
             }
             this.props.musicInfoActions.fetchMusic(currentSong.hash);
-        }else{
+        } else {
             this.props.musicInfoActions.control({playing: false});
         }
 
     }
+
     componentDidMount() {
         this.props.musicInfoActions.audioObj({player: this.player});
     }

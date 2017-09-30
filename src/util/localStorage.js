@@ -26,4 +26,4 @@ const setItem = (key, value) => {
     }
 };
 
-export default {getItem, setItem};
+export {getItem, setItem};

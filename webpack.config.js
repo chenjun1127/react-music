@@ -10,16 +10,16 @@ const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 module.exports = {
     devtool: 'eval-source-map',
-    entry:{
-        app:[path.resolve(SRC_PATH,'index.js')]
+    entry: {
+        app: [path.resolve(SRC_PATH, 'index.js')]
     },
     output: {
         path: BUILD_PATH,
         filename: 'js/[name].[hash:5].js',
-        publicPath:'/'
+        publicPath: '/'
     },
     resolve: {
-        extensions: [".js", ".json", ".jsx", ".css",".scss"],
+        extensions: [".js", ".json", ".jsx", ".css", ".scss"],
     },
     module: {
         rules: [{
@@ -29,7 +29,7 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets:['react', 'es2015','stage-0']
+                    presets: ['react', 'es2015', 'stage-0']
                 }
             }
 
@@ -61,24 +61,25 @@ module.exports = {
         }, {
             test: /\.json$/,
             loader: 'json-loader'
-        },{
-            test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
-            loader:'url-loader'
+        }, {
+            test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+            loader: 'url-loader'
         }]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
         new HtmlWebpackPlugin({
-            title: 'react-music-player',
+            title: 'react-music',
+            favicon: './src/static/images/favicon.ico',
             template: './templates/index.html',
             filename: 'index.html',
             inject: 'body'
         }),
         new ExtractTextPlugin("css/style.css"),
-        new OpenBrowserPlugin({ url: 'http://localhost:3000' })
+        new OpenBrowserPlugin({url: 'http://localhost:3000'})
     ]
 }
