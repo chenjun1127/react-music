@@ -2,8 +2,6 @@
  * Created by 0easy-23 on 2017/9/30.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import Loading from '../../components/Common/Loading';
 import * as localStore from '../../util/localStorage';
 export default class extends Component {
     constructor(props) {
@@ -12,12 +10,16 @@ export default class extends Component {
             loaded: false,
             value: '',
             display: false,
+            history: localStore.getItem('search_history') ? localStore.getItem('search_history').split(',') : []
         };
         this.clearText = this.clearText.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.keyUp = this.keyUp.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSearchHot = this.handleSearchHot.bind(this);
+        this.setHistory = this.setHistory.bind(this);
+        this.clearHistory = this.clearHistory.bind(this);
+        this.clearAll = this.clearAll.bind(this);
     }
 
     componentDidMount() {
@@ -37,14 +39,43 @@ export default class extends Component {
     }
 
     handleSearchHot(val) {
-        this.props.searchActions.fetchSearchResult(val);
+        this.props.history.push({pathname: '/search/result', state: {searchValue: val}});
+        this.setHistory(val);
     }
 
     handleSearch() {
         const searchValue = this.state.value.trim();
         if (searchValue !== '') {
-            this.props.searchActions.fetchSearchResult(searchValue);
+            this.props.history.push({pathname: '/search/result', state: {searchValue: searchValue}});
+            this.setHistory(searchValue);
         }
+    }
+
+    setHistory(data) {
+        this.setState({
+            history: this.state.history.push(data),
+        });
+        const searchHistory = this.state.history;
+        let newHistory = [];
+        for (let i = 0; i < searchHistory.length; i++) {
+            if (newHistory.indexOf(searchHistory[i]) == -1) {
+                newHistory.push(searchHistory[i])
+            }
+        }
+        localStore.setItem('search_history', newHistory);
+    }
+
+    clearHistory(text) {
+        const historyArr = localStore.getItem('search_history').split(',');
+        const index = historyArr.indexOf(text);
+        historyArr.splice(index, 1);
+        localStore.setItem('search_history', historyArr);
+        this.setState({history: historyArr});
+    }
+
+    clearAll() {
+        localStore.setItem('search_history', '');
+        this.setState({history: []});
     }
 
     render() {
@@ -56,7 +87,6 @@ export default class extends Component {
                 </span>
             )
         });
-
         return (
             <div className="container">
                 <div className="header">
@@ -76,7 +106,22 @@ export default class extends Component {
                 <div className="hotList">
                     {hotList}
                 </div>
-
+                <div className="searchTitle">
+                    <span>搜索历史</span>
+                    <em onClick={this.clearAll}>清除历史</em>
+                </div>
+                <div className="searchHistory">
+                    {
+                        this.state.history.length > 0 ? this.state.history.map((ele, index) => {
+                            return (
+                                <p key={index}>
+                                    <span onClick={() => this.handleSearchHot(ele)}>{ele}</span>
+                                    <em onClick={() => this.clearHistory(ele)}>&times;</em>
+                                </p>
+                            )
+                        }) : null
+                    }
+                </div>
             </div>
         )
     }
