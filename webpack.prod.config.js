@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成build文件夹及文件：
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const pkg = require('./package.json');
@@ -76,7 +75,7 @@ module.exports = {
             test: /\.json$/,
             loader: 'json-loader'
         },{
-            test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+            test:/\.(woff|woff2|svg|ttf|eot)($|\?)/i,
             loader:'url-loader'
         }]
     },
@@ -107,4 +106,4 @@ module.exports = {
         }),
         new ExtractTextPlugin('css/[name].[hash:5].css')
     ]
-}
+};

@@ -27,6 +27,12 @@ const removeMusic = (data) => {
         data
     }
 };
+// 移除播放列表所有歌曲
+const removeMusicAll = () => {
+    return {
+        type: actionTypes.MUSIC_REMOVE_ALL
+    }
+};
 // 获取音乐hash
 const getMusic = (data) => {
     return {
@@ -79,4 +85,18 @@ const fetchMusic = (id) => {
         }
     }
 };
-export {updateMusic, addMusic, removeMusic, getMusic, control, updateProgress, audioObj, updateLyrics, fetchMusic};
+// 添加到收藏列表
+const addFavorite = (data) => {
+    return {
+        type: actionTypes.MUSIC_ADD_FAVORITE,
+        data
+    }
+};
+// 移除收藏列表
+const removeFavorite = (data) => {
+    return {
+        type: actionTypes.MUSIC_REMOVE_FAVORITE,
+        data
+    }
+};
+export {updateMusic, addMusic, removeMusic, removeMusicAll, getMusic, control, updateProgress, audioObj, updateLyrics, fetchMusic, addFavorite,removeFavorite};

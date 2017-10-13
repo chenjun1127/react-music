@@ -20,6 +20,7 @@ export default class extends Component {
         this.fetchData();
     }
 
+
     playAll() {
         const albumSongList = this.state.albumList.list.info;
         if(albumSongList.length > 0){
@@ -40,6 +41,21 @@ export default class extends Component {
                 loaded: true
             })
         })
+    }
+
+    addFavorite(ele) {
+        const currentEle = this.refs[ele.hash];
+        if (currentEle.style.color === '') {
+            currentEle.style.color = 'rgb(233, 32, 61)';
+            this.props.musicInfoActions.addFavorite(ele.hash + ',' + ele.filename);
+        } else {
+            currentEle.style.color = '';
+            this.props.musicInfoActions.removeFavorite(ele.hash + ',' + ele.filename);
+        }
+    }
+
+    setStyle(hash) {
+        return this.props.favoriteMusic.length > 0 && this.props.favoriteMusic.toString().indexOf(hash) >= 0 ? {color: 'rgb(233, 32, 61)'} : {color: ''};
     }
 
     render() {
@@ -69,7 +85,7 @@ export default class extends Component {
                                                         <span>{ele.filename}</span>
                                                         <p className="album-remark">{ele.remark}</p>
                                                     </Link>
-                                                    <i className="icon-favorite"></i>
+                                                    <i className="icon-favorite" style={this.setStyle(ele.hash)} ref={ele.hash} onClick={() => this.addFavorite(ele)}></i>
                                                 </li>
                                             )
                                         })

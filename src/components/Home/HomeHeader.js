@@ -13,7 +13,7 @@ export default class extends Component {
         return (
             <div className="header">
                 <div className="cityName">
-                    <Link to="/login"><i className="icon-user-circle-o"></i></Link>
+                    <Link to="/user/login"><i className="icon-user-circle-o"></i></Link>
                 </div>
                 <div className="searchBar">
                     <div className="searchInput">

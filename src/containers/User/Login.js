@@ -2,12 +2,12 @@ import {bindActionCreators} from 'redux';
 import Login from '../../components/User/Login';
 import {connect} from 'react-redux';
 import * as userInfoActions from '../../actions/userInfo';
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         userInfo: state.userInfo
     }
 };
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         userInfoActions: bindActionCreators(userInfoActions, dispatch)
     }

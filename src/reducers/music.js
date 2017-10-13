@@ -2,6 +2,7 @@
  * Created by 0easy-23 on 2017/9/14.
  */
 import * as actionTypes from '../constants/index';
+import {unique} from '../util/tools';
 // 总歌单
 const albums = (state = {}, action) => {
     switch (action.type) {
@@ -19,18 +20,21 @@ const musicList = (state = [], action) => {
             let arr = [...state, action.data];
             let hash = {};
             // 去除数组里的重复对象
-            arr = arr.reduce((item, next) => {
+            let newArr = arr.reduce((item, next) => {
                 hash[next.song.hash] ? '' : hash[next.song.hash] = true && item.push(next);
                 return item
             }, []);
-            return arr;
+            return newArr;
             break;
         case actionTypes.MUSIC_REMOVE:
             return state.filter((item) => {
-                if (item.id !== action.data.id) {
+                if (item.song.hash !== action.data) {
                     return item
                 }
             });
+            break;
+        case actionTypes.MUSIC_REMOVE_ALL:
+            return state = [];
             break;
         default:
             return state;
@@ -45,6 +49,7 @@ const music = (state = {}, action) => {
             return state;
     }
 };
+// 播放控制
 const control = (state = {playing: false}, action) => {
     switch (action.type) {
         case actionTypes.MUSIC_CONTROL:
@@ -53,6 +58,7 @@ const control = (state = {playing: false}, action) => {
             return state;
     }
 };
+// 播放进度
 const progress = (state = {currentTime: 0, percentage: 0}, action) => {
     switch (action.type) {
         case actionTypes.MUSIC_PLAYTIME:
@@ -61,6 +67,7 @@ const progress = (state = {currentTime: 0, percentage: 0}, action) => {
             return state;
     }
 };
+// 声音对象
 const audio = (state = {}, action) => {
     switch (action.type) {
         case actionTypes.MUSIC_AUDIO:
@@ -69,7 +76,7 @@ const audio = (state = {}, action) => {
             return state;
     }
 };
-
+// 歌词同步
 const lyricsUpdate = (state = {}, action) => {
     switch (action.type) {
         case actionTypes.MUSIC_UPDATELYRICS:
@@ -78,5 +85,24 @@ const lyricsUpdate = (state = {}, action) => {
             return state;
     }
 };
-
-export {albums, musicList, music, control, progress, audio, lyricsUpdate};
+// 歌曲收藏
+const favoriteMusic = (state = [], action) => {
+    switch (action.type) {
+        case  actionTypes.MUSIC_ADD_FAVORITE:
+            let arr = [...state, action.data];
+            // let hash = {};
+            // let newArr = arr.reduce((item, next) => {
+            //     hash[next.hash] ? '' : hash[next.hash] = true && item.push(next);
+            //     return item
+            // }, []);
+            return unique(arr);
+        case actionTypes.MUSIC_REMOVE_FAVORITE:
+            const index = state.indexOf(action.data);
+            state.splice(index, 1);
+            return state;
+            break;
+        default:
+            return state;
+    }
+};
+export {albums, musicList, music, control, progress, audio, lyricsUpdate, favoriteMusic};

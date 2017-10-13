@@ -1,6 +1,6 @@
 /**
  * Created by 0easy-23 on 2017/9/1.
- * 油路配置（方便本地打包，使用了HashRouter）;
+ * 路由配置（方便本地打包，使用了HashRouter）;
  * tips:开发环境下面使用了browserHistory，打包上线的时候需要服务器进行配置;
  */
 import React from 'react';
@@ -19,13 +19,14 @@ import ArtistSinger from '../containers/Artist/ArtistSinger';
 import New from '../containers/New/New';
 import Search from '../containers/Search/Search';
 import Result from '../containers/Search/Result';
+import Center from '../containers/User/Center';
+import Love from '../containers/User/Love';
 const Routes = () => (
     <div className="app">
         <Player/>
         <Router>
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path='/login' component={Login}/>
                 <Route path="/album/:id" component={Album}/>
                 <Route path="/album" component={AlbumList}/>
                 <Route path="/play" component={Play}/>
@@ -37,6 +38,9 @@ const Routes = () => (
                 <Route path="/new" component={New}/>
                 <Route path="/search" exact component={Search}/>
                 <Route path="/search/result" component={Result}/>
+                <Route path='/user/login' component={Login}/>
+                <Route path="/user/center" component={Center}/>
+                <Route path="/user/Love" component={Love}/>
                 <Redirect from="/undefined" to={{pathname: '/', search: '?mold=redirect'}}/>
             </Switch>
         </Router>

@@ -9,6 +9,7 @@
   font-style: normal;
 }
 
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -94,17 +95,41 @@
 .icon-switch:before {
   content: "\e904";
 }
+.icon-lock:before {
+  content: "\e915";
+}
 .icon-users:before {
   content: "\e905";
 }
 .icon-user2:before {
   content: "\e906";
 }
+.icon-screen:before {
+  content: "\e916";
+}
+.icon-tablet:before {
+  content: "\e917";
+}
+.icon-pencil:before {
+  content: "\e918";
+}
 .icon-cog:before {
   content: "\e907";
 }
 .icon-search:before {
   content: "\e908";
+}
+.icon-trash-2:before {
+  content: "\e919";
+}
+.icon-unlock:before {
+  content: "\e91a";
+}
+.icon-user3:before {
+  content: "\e91b";
+}
+.icon-x-circle:before {
+  content: "\e91c";
 }
 .icon-schedule:before {
   content: "\e8b5";

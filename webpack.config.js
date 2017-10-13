@@ -41,7 +41,7 @@ module.exports = {
             }))
         }, {
             test: /\.(png|jpg|gif)$/,
-            use: [{
+            use:[{
                 loader: 'url-loader',
                 options: {
                     limit: 8192 // 小于8KB 使用base64格式图片
@@ -62,7 +62,7 @@ module.exports = {
             test: /\.json$/,
             loader: 'json-loader'
         }, {
-            test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+            test: /\.(woff|woff2|svg|ttf|eot)($|\?)/i,
             loader: 'url-loader'
         }]
     },
@@ -82,4 +82,4 @@ module.exports = {
         new ExtractTextPlugin("css/style.css"),
         new OpenBrowserPlugin({url: 'http://localhost:3000'})
     ]
-}
+};

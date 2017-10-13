@@ -68,6 +68,23 @@ export default class extends Component {
     //     })
     // }
 
+    addFavorite(ele) {
+        const hash  = ele.split('|')[1];
+        const filename = ele.split('|')[0];
+        const currentEle = this.refs[hash];
+        if (currentEle.style.color === '') {
+            currentEle.style.color = 'rgb(233, 32, 61)';
+            this.props.musicInfoActions.addFavorite(hash + ',' + filename);
+        } else {
+            currentEle.style.color = '';
+            this.props.musicInfoActions.removeFavorite(hash + ',' + filename);
+        }
+    }
+
+    setStyle(hash) {
+        return this.props.favoriteMusic.length > 0 && this.props.favoriteMusic.toString().indexOf(hash) >= 0 ? {color: 'rgb(233, 32, 61)'} : {color: ''};
+    }
+
     render() {
         return (
             <div className="container">
@@ -85,7 +102,7 @@ export default class extends Component {
                                             <Link to={`/play/#${eleArr[1]}`}>
                                                 <span className={this.props.music.hash === eleArr[1] ? 'active' : ''}>{eleArr[0]}</span>
                                             </Link>
-                                            <i className="icon-favorite"></i>
+                                            <i className="icon-favorite" style={this.setStyle(eleArr[1])} ref={eleArr[1]} onClick={() => this.addFavorite(ele)}></i>
                                         </li>
                                     )
                                 })
