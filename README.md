@@ -97,9 +97,9 @@
 │   ├── util          			工具目录
 │   │   ├── xxx.js
 │   │   └── ...
-├── templates					基本模板            	
+├── templates 					基本模板            	
 │   └── index.html	
-├── dist						打包生成目录             	
+├── dist 						打包生成目录             	
 │   ├── css          	
 │   │   └── xxx.css
 │   ├── js          		
