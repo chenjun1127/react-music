@@ -7,7 +7,6 @@ import headPic from '../../static/images/girl.jpg';
 import {Link} from 'react-router-dom';
 export default class extends Component {
     render(){
-        console.log(this)
         return (
             <div className="container">
                 <Header title="个人中心"/>

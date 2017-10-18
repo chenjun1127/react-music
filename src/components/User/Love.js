@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import Header from '../../components/Common/Header';
 import {Link} from 'react-router-dom';
+import noData from '../../static/images/nodata.png';
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +39,10 @@ export default class extends Component {
                                 })
                             }
                         </ul> :
-                        <div>暂无音乐</div>
+                        <div className="no-data">
+                            <img src={noData}/>
+                            <span>暂无音乐，快去添加吧！</span>
+                        </div>
                 }
             </div>
         )

@@ -11,6 +11,7 @@ import Slider from 'react-slick';
 import '../../static/css/media-response.css';
 import MusicList from '../../containers/Home/MusicList';
 import Loading from '../../components/Common/Loading';
+import noData from '../../static/images/nodata.png';
 export default class Player extends Component {
     static defaultProps = {
         background: '-webkit-linear-gradient(#e9203d, #e9203d) no-repeat, #ddd',
@@ -128,9 +129,12 @@ export default class Player extends Component {
             const rangeStyle = percentage * 100 + '%' + ' ' + '100%';
             if(currentSong.error){
                 return (
-                    <div>
+                    <div className="container">
                         <Header/>
-                        <div>很抱歉，当前音乐{currentSong.error}</div>
+                        <div className="no-data">
+                            <img src={noData}/>
+                            <span>很抱歉，当前音乐{currentSong.error}！</span>
+                        </div>
                     </div>
                 )
             }else{
@@ -189,7 +193,13 @@ export default class Player extends Component {
             }
         } else if(!this.props.music.hash || this.props.music.hash === 'null'){
             return (
-                <div>当前无音乐...</div>
+                <div className="container">
+                    <Header/>
+                    <div className="no-data">
+                        <img src={noData}/>
+                        <span>当前无音乐！</span>
+                    </div>
+                </div>
             )
         }else {
             return (

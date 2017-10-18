@@ -28,11 +28,13 @@ body {
 }
 
 .loading {
+    height: 100%;
+    width: 100%;
+    position: absolute;
     @include flexBox;
     @include justify-content(center);
     @include align-items(center);
     @include flexDirection(row);
-    padding-top: 50%;
     i {
         font-size: $fontSize*3;
         color: #888;
@@ -810,5 +812,46 @@ body {
     p {
         margin: 0 10px;
         padding: 5px 0
+    }
+}
+
+.no-data {
+    img {
+        width: 100px;
+        margin-top: 50%;
+    }
+    span {
+        text-align: center;
+        display: block;
+    }
+}
+
+/*********04页面*********/
+.notFound {
+    @include flexBox;
+    @include flexDirection(column);
+    @include justify-content(flex-start);
+    padding-top: 25%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    img {
+        width: 70%;
+    }
+    span {
+        display: block;
+        text-align: center;
+        padding: nth($d, 4);
+    }
+    a {
+        display: inline-block;
+        padding: 12px 15px;
+        background: $baseColor;
+        color: #fff;
+        border-radius: 1.5rem;
+        width: 7rem;
+        text-align: center;
+        margin: 10px auto;
+        margin-top: 0;
     }
 }

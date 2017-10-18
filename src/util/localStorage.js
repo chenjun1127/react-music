@@ -1,7 +1,7 @@
 /**
  * Created by 0easy-23 on 2017/9/4.
  */
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 const getItem = (key) => {
     let value;
     try {
