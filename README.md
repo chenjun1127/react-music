@@ -21,9 +21,9 @@
 * 喜欢音乐加入收藏列表；
 * 模拟登录功能（随便输入用户名，密码即可）；
 
-项目结构
+### 二、项目结构
 
-```bash
+```javascript
 ├── src               			项目主文件目录
 │   ├── actions           		Redux actions
 │   │   ├── xxx.js
@@ -58,7 +58,7 @@
 │   ├── reducers          		Redux reducers
 │   │   ├── index.js
 │   │   └── ...
-│   ├── containers          	智能组件 
+│   ├── containers          		智能组件 
 │   │   ├──	Artist
 │   │   │	├── xxx.js
 │   │   │	└── ...
@@ -93,9 +93,9 @@
 │   ├── util          			工具目录
 │   │   ├── xxx.js
 │   │   └── ...
-├── templates   				基本模板            	
+├── templates					基本模板            	
 │   └── index.html	
-├── dist  						打包生成目录             	
+├── dist						打包生成目录             	
 │   ├── css          	
 │   │   └── xxx.css
 │   ├── js          		
@@ -109,11 +109,12 @@
 ├── app.js            			Express下的启动配置
 ├── server.js        			主要服务启动文件   
 ├── webpack.config.js     		基本配置      
-├── webpack.prod.config.js  	生产环境配置
+├── webpack.prod.config.js 		生产环境配置
 ├── yarn.lock         			
 └── package.json
 ```
-### 二、如何执行
+screenshot与images.md为截图说明文件，是为了方便查看，与本项目无关！
+### 三、如何执行
 
 ####  1、将项目克隆到本地，cd 到 react-music
 ```javascript
@@ -131,5 +132,7 @@ npm start or yarn start
 ```
 #### 4、打开浏览器浏览 http://localhost:3000/
 
-### 三、项目总结
-整体项目
+### 四、项目总结
+整体项目实现了一个基本播放器应有的功能，但个别功能还有待完善，比如收藏列表本地持续化存储、登录注册未做真正限制等。
+Tips：在npm install or yarn install 的时候，请确保网络良好，如个别依赖安装不了，请设置淘宝镜像为安装源；
+如有问题：请联系QQ：402074940
