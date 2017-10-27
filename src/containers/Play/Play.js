@@ -7,15 +7,7 @@ import * as musicInfoAction from '../../actions/music';
 import Play from '../../components/Play/Play';
 
 const mapStateToProps = (state) => {
-    return {
-        musicList: state.musicList,
-        music: state.music,
-        control:state.control,
-        progress:state.progress,
-        audio:state.audio,
-        lyricsUpdate:state.lyricsUpdate,
-        spin:state.spin,
-    }
+    return state;
 };
 const mapDispatchToProps = (dispatch) => {
     return {

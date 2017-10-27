@@ -99,4 +99,11 @@ const removeFavorite = (data) => {
         data
     }
 };
-export {updateMusic, addMusic, removeMusic, removeMusicAll, getMusic, control, updateProgress, audioObj, updateLyrics, fetchMusic, addFavorite,removeFavorite};
+// 音量控制
+const volumeControl = (data) => {
+    return {
+        type: actionTypes.MUSIC_VOLUME,
+        data
+    }
+};
+export {updateMusic, addMusic, removeMusic, removeMusicAll, getMusic, control, updateProgress, audioObj, updateLyrics, fetchMusic, addFavorite, removeFavorite, volumeControl};

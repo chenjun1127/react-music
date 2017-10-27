@@ -34,8 +34,9 @@ export default class extends Component {
         this.setState({value: e.target.value});
     }
 
-    keyUp() {
+    keyUp(e) {
         this.setState({display: true});
+        e.keyCode === 13 && this.handleSearch();
     }
 
     handleSearchHot(val) {
@@ -52,13 +53,11 @@ export default class extends Component {
     }
 
     setHistory(data) {
-        this.setState({
-            history: this.state.history.push(data),
-        });
+        this.setState({history: this.state.history.push(data)});
         const searchHistory = this.state.history;
         let newHistory = [];
         for (let i = 0; i < searchHistory.length; i++) {
-            if (newHistory.indexOf(searchHistory[i]) == -1) {
+            if (newHistory.indexOf(searchHistory[i]) === -1) {
                 newHistory.push(searchHistory[i])
             }
         }

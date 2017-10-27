@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
         progress:state.progress,
         audio:state.audio,
         lyricsUpdate:state.lyricsUpdate,
-        spin:state.spin
+        spin:state.spin,
+        volumeObj:state.volumeObj
     }
 };
 const mapDispatchToProps = (dispatch) => {

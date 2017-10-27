@@ -397,6 +397,7 @@ body {
         @include justify-content(space-around);
         .player-title {
             padding: 0 0 20px 0;
+            position: relative;
             .songName, .singerName {
                 text-align: center;
                 color: $whiteColor;
@@ -404,6 +405,15 @@ body {
             .songName {
                 font-size: $fontSize*1.5;
                 padding: nth($d, 2) 0;
+            }
+            .dot {
+                position: absolute;
+                right: 20px;
+                top: 11px;
+                i {
+                    color: #fff;
+                    font-size: $fontSize*1.6;
+                }
             }
         }
         .sliderContainer {
@@ -454,6 +464,85 @@ body {
     }
 }
 
+.dot-modal {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    @include transition(all 0.25s ease 0s);
+    @include transform(translateY(100%));
+    color: #fff;
+    h1 {
+
+        border-bottom: 1px solid #9d9d9d;
+        padding: nth($d, 4);
+    }
+    .volume {
+        padding: nth($d, 4);
+        @extend %flex-row;
+        .volume-icon {
+            width: 30px;
+            height: 30px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .volume-slider {
+            flex: 1;
+            height: 2px;
+            background: #858585;
+            position: relative;
+            .volume-mask {
+                position: absolute;
+                width: 10px;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background: $baseColor;
+            }
+            .volume-bar {
+                position: absolute;
+                width: 10px;
+                border-radius: 50%;
+                height: 10px;
+                left: 10px;
+                top: -4px;
+                background: $baseColor;
+            }
+        }
+    }
+    .cancel {
+        padding: nth($d, 4);
+        text-align: center;
+        border-top: 1px solid #9d9d9d;
+    }
+    .move-btn {
+        padding: nth($d, 4);
+        border-bottom: 1px solid #9d9d9d;
+        @extend %flex-row;
+        .icon-btn {
+            @include flexBox;
+            @include flexDirection(column);
+            @include justify-content(center);
+            @include align-items(center);
+            background: #333;
+            border-radius: 0.25rem;
+            margin-right: nth($d, 4);
+            width: 36px;
+            height: 36px;
+            i {
+                color: #d9d9d9;
+                font-size: $fontSize*1.1;
+            }
+            .info-text {
+                padding-top: 10px;
+                padding-bottom: 2px;
+                font-size: $fontSize*0.8;
+                font-family: $font;
+            }
+        }
+    }
+}
+
 /*********旋转唱片*********/
 .components-album {
     @include horizontal-center;
@@ -463,7 +552,7 @@ body {
     height: 16rem;
     padding: 5px;
     @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.4));
-    .ablum-pic {
+    .album-pic {
         border-radius: 50%;
         width: 100%;
         height: 100%;
@@ -535,7 +624,8 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 1);
     z-index: 1001;
-    display: none;
+    @include transition(all 0.25s ease 0s);
+    @include transform(translateY(100%));
     .list-title {
         padding: nth($d, 4);
         border-bottom: 1px solid $borderColor;
@@ -697,6 +787,13 @@ body {
     }
 }
 
+.singer-info {
+    padding: nth($d, 3);
+    .text-info {
+        line-height: 1.8em;
+    }
+}
+
 .artistSingerList {
     li {
         padding: nth($d, 3) 0;
@@ -854,4 +951,8 @@ body {
         margin: 10px auto;
         margin-top: 0;
     }
+}
+
+.translateY-0 {
+    @include transform(translateY(0%));
 }

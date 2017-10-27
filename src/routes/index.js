@@ -22,6 +22,7 @@ import Result from '../containers/Search/Result';
 import Center from '../containers/User/Center';
 import Love from '../containers/User/Love';
 import NotFound from '../components/Common/NotFound';
+import SingerInfo from '../components/Artist/SingerInfo';
 const Routes = () => (
     <div className="app">
         <Player/>
@@ -41,7 +42,8 @@ const Routes = () => (
                 <Route path="/search/result" component={Result}/>
                 <Route path='/user/login' component={Login}/>
                 <Route path="/user/center" component={Center}/>
-                <Route path="/user/Love" component={Love}/>
+                <Route path="/user/love" component={Love}/>
+                <Route path="/singer/info" component={SingerInfo}/>
                 <Route path='/404' component={NotFound} />
                 <Redirect from='*' to='/404' />
             </Switch>

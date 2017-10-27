@@ -10,6 +10,7 @@ export const MUSIC_AUDIO = 'MUSIC_AUDIO';
 export const MUSIC_UPDATELYRICS = 'MUSIC_UPDATELYRICS';
 export const MUSIC_ADD_FAVORITE = 'MUSIC_ADD_FAVORITE';
 export const MUSIC_REMOVE_FAVORITE = 'MUSIC_REMOVE_FAVORITE';
+export const MUSIC_VOLUME = 'MUSIC_VOLUME';
 /************rank***********************/
 export const SAVE_RANKLIST = 'SAVE_RANKLIST';
 /***********loading显示与隐藏************/

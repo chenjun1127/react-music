@@ -76,13 +76,15 @@ class Player extends Component {
 
     render() {
         const currentSong = this.getCurrentSong();
+        const volume = this.props.volumeObj.volume;
         return (
             <div style={{display: 'none'}}>
-                <ReactPlayer url={currentSong ? currentSong.song.url : null} controls playing={this.props.control.playing} ref={player => {
+                <ReactPlayer volume={volume} url={currentSong ? currentSong.song.url : null} controls playing={this.props.control.playing} ref={player => {
                     this.player = player
                 }} onProgress={this.onProgress} onDuration={this.onDuration} onEnded={this.onEnd}/>
             </div>
         )
     }
 }
+
 export default Player;

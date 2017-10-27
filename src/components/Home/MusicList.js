@@ -48,25 +48,22 @@ export default class extends Component {
     render() {
         const musicList = this.props.musicList;
         const lists = musicList.length > 0 && musicList.map((ele, index) => {
-                return (
-                    <li key={index}>
-                        <span onClick={this.playThisMusic.bind(this, ele)} className={this.props.music.hash === ele.song.hash ? 'active' : ''}>{ele.song.fileName}</span>
-                        <i onClick={() => this.clearMusicById(ele.song.hash, index)}>&times;</i>
-                    </li>
-                )
-            });
-
+            return (
+                <li key={index}>
+                    <span onClick={this.playThisMusic.bind(this, ele)} className={this.props.music.hash === ele.song.hash ? 'active' : ''}>{ele.song.fileName}</span>
+                    <i onClick={() => this.clearMusicById(ele.song.hash, index)}>&times;</i>
+                </li>
+            )
+        });
         return (
-            <div className="modal modal-music-list" style={{display: this.props.show ? 'block' : 'none'}}>
+            <div className={`modal-music-list ${this.props.show ? 'translateY-0' : ''}`}>
                 <div className="list-title">
                     <i className="icon-close" onClick={this.close.bind(this)}></i>
                     <span>播放列表（{musicList.length}）首</span>
                     <em onClick={this.clearMusicAll.bind(this)}>清除</em>
                 </div>
                 <ul className="list-ul">
-                    {
-                        lists
-                    }
+                    {lists}
                 </ul>
             </div>
         )

@@ -105,4 +105,13 @@ const favoriteMusic = (state = [], action) => {
             return state;
     }
 };
-export {albums, musicList, music, control, progress, audio, lyricsUpdate, favoriteMusic};
+// 音量
+const volumeObj = (state = {volume:0.5}, action) => {
+    switch (action.type) {
+        case actionTypes.MUSIC_VOLUME:
+            return Object.assign({}, state, action.data);
+        default:
+            return state;
+    }
+};
+export {albums, musicList, music, control, progress, audio, lyricsUpdate, favoriteMusic,volumeObj};

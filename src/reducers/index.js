@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import userInfo from './userInfo';
-import {albums, musicList, music, control, progress, audio,lyricsUpdate,favoriteMusic} from './music';
+import {albums, musicList, music, control, progress, audio,lyricsUpdate,favoriteMusic,volumeObj} from './music';
 import {rankList} from './rank';
 import {spin} from './spin';
 import {hotList,resultList} from './search';
@@ -17,5 +17,6 @@ export default combineReducers({
     spin,
     hotList,
     resultList,
-    favoriteMusic
+    favoriteMusic,
+    volumeObj
 })
