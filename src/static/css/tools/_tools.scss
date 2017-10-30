@@ -69,7 +69,7 @@
 }
 
 @mixin textCenter {
-    @include flexbox;
+    @include flexBox;
     @include justify-content(center);
     @include align-items(center);
 }
