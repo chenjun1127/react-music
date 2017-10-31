@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import Header from '../../components/Common/Header';
 import {Link} from 'react-router-dom';
 import Loading from '../../components/Common/Loading';
+
 export default class extends Component {
     componentDidMount() {
         this.props.searchActions.fetchSearchResult(this.props.location.state.searchValue);
@@ -25,6 +26,16 @@ export default class extends Component {
         return this.props.favoriteMusic.length > 0 && this.props.favoriteMusic.toString().indexOf(hash) >= 0 ? {color: 'rgb(233, 32, 61)'} : {color: ''};
     }
 
+    playAll() {
+        const singerSongs = this.props.resultList.data.info;
+        for (let i = 0; i < singerSongs.length; i++) {
+            this.props.musicInfoActions.fetchMusic(singerSongs[i].hash.toUpperCase());
+        }
+        this.props.musicInfoActions.getMusic({hash: singerSongs[0].hash.toUpperCase()});
+        this.props.musicInfoActions.control({playing: true});
+        this.props.history.push(`/play/#${singerSongs[0].hash.toUpperCase()}`);
+    }
+
     render() {
         let result;
         if (this.props.spin && JSON.stringify(this.props.resultList) !== '{}') {
@@ -42,7 +53,7 @@ export default class extends Component {
         }
         return (
             <div className="container">
-                <Header title={this.props.location.state.searchValue}/>
+                <Header title={this.props.location.state.searchValue} rightIcon="icon-playlist_add" rightIconStyle={{fontSize: '24px'}} rightAction={this.playAll.bind(this)}/>
                 {
                     this.props.spin && JSON.stringify(this.props.resultList) !== '{}' ? <ul className="songList">{result}</ul> : <Loading/>
                 }

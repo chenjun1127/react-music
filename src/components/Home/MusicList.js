@@ -16,6 +16,7 @@ export default class extends Component {
         this.props.musicInfoActions.getMusic({hash: e.song.hash});
         this.props.history.replace('#' + e.song.hash);
         this.props.musicInfoActions.fetchMusic(e.song.hash);
+        this.close();
     }
 
     clearMusicById(hash, i) {

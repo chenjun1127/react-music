@@ -129,7 +129,7 @@ export default class Player extends Component {
     }
 
     openDot() {
-        this.setState({dot: true});
+        this.setState({dot: true,modal: false});
     }
 
     closeDot() {
