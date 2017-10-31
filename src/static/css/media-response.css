@@ -1,9 +1,16 @@
-@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
-    .components-album{
+@media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* 兼容iphone4/4s */
+    .components-album {
         width: 13rem;
-        height:13rem;
+        height: 13rem;
     }
-    .components-player-control{
+
+    .components-player-control {
         padding: 0 20px;
+        height: 130px;
+    }
+
+    .container-play .container-inner .sliderContainer {
+        height: 240px;
     }
 }

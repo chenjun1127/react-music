@@ -253,7 +253,7 @@ body {
 }
 
 .slick-dots li.slick-active button:before {
-    color: red;
+    color: $baseColor;
 }
 
 /************歌单***************/
@@ -399,11 +399,12 @@ body {
         @include flexDirection(column);
         @include justify-content(space-around);
         .player-title {
-            padding: 0 0 20px 0;
             position: relative;
             .songName, .singerName {
                 text-align: center;
                 color: $whiteColor;
+                @include text-ellipsis;
+                margin: 0 25px;
             }
             .songName {
                 font-size: $fontSize*1.5;
@@ -420,7 +421,7 @@ body {
             }
         }
         .sliderContainer {
-            @include flex(1);
+            height: $fontSize*20;
             .slick-list {
                 height: 100%;
                 .slick-track {
@@ -430,33 +431,29 @@ body {
             .content-player {
                 @extend %flex-row;
                 @include justify-content(center);
+                height: 100%;
             }
             .slick-dots li.slick-active button:before {
                 color: #fff;
             }
             .slick-dots {
                 bottom: -25px;
+                left: 0;
             }
             .lyric {
-                height: 100%;
                 position: relative;
                 overflow: hidden;
-                @include flex(1);
-                @include flexBox;
-                @include flexDirection(column);
-                @include justify-content(space-around);
                 .originLyric {
                     padding: nth($d, 3) nth($d, 5);
-                    height: 100%;
                     width: 100%;
-                    position: absolute;
                     @include transition(all 0.25s ease 0.05s);
-                    left: 0;
-                    top: 0;
                     .line {
                         text-align: center;
-                        @include verticalCenter(42px);
                         color: rgba(255, 255, 255, 0.9);
+                        @include flexBox;
+                        @include justify-content(center);
+                        @include align-items(center);
+                        @include text-ellipsis;
                     }
                     .on {
                         color: $baseColor;
@@ -592,9 +589,7 @@ body {
 
 .components-player-control {
     width: 100%;
-    padding: 15px 20px;
-    padding-bottom: 30px;
-    height: 30%;
+    padding: 20px;
     @include flexBox;
     @include flexDirection(column);
     @include justify-content(space-around);
@@ -604,6 +599,7 @@ body {
         @include flexBox;
         @include justify-content(center);
         @include align-items(center);
+        padding: 10px 0;
         .time_left {
             padding-top: 10px;
             padding-right: 10px;

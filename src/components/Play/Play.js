@@ -18,6 +18,7 @@ import svg2 from '../../static/css/svg/svg-2.svg';
 export default class Player extends Component {
     static defaultProps = {
         background: '-webkit-linear-gradient(#e9203d, #e9203d) no-repeat, #ddd',
+        height:38, // 歌词每行高度
         settings: {
             dots: true,
             infinite: true,
@@ -251,14 +252,13 @@ export default class Player extends Component {
                                         </div>
                                     </div>
                                     <div className="lyric">
-                                        <div className="originLyric" style={{transform: 'translateY(-' + this.props.lyricsUpdate.index * 42 + 'px)'}}>
-                                            {currentSongLyrics.map((ele, index) => {
-                                                return (
-                                                    <p key={index} id={`line-${index}`} className={this.props.lyricsUpdate.time === ele[0] ? 'line on' : 'line'}>
-                                                        {ele[1]}
-                                                    </p>
-                                                )
-                                            })}
+                                        <div className="originLyric" style={{transform: 'translateY(-' + this.props.lyricsUpdate.index * this.props.height + 'px)'}}>
+                                            {currentSongLyrics.map((ele, index) => (
+                                                <p key={index} id={`line-${index}`} style={{height: this.props.height + 'px'}}
+                                                   className={this.props.lyricsUpdate.time === ele[0] ? 'line on' : 'line'}>
+                                                    {ele[1]}
+                                                </p>
+                                            ))}
                                         </div>
                                     </div>
                                 </Slider>

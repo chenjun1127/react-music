@@ -2,6 +2,12 @@
     margin: 0 auto;
 }
 
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 %box-sizing {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -51,6 +57,7 @@
     -o-transition: $args;
     transition: $args;
 }
+
 @mixin animation($args...) {
     -webkit-animation: $args;
     -moz-animation: $args;
