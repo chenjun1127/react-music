@@ -134,7 +134,7 @@ npm install or yarn install
 npm start or yarn start
 // npm run build(打包)
 ```
-#### 4、打开浏览器浏览 http://localhost:3000/，强烈建议使用Chrome、Firefox浏览器浏览。
+#### 4、打开浏览器浏览 [http://localhost:3000/](http://localhost:3000/)，强烈建议使用 Chrome、Firefox 浏览器浏览。
 
 ### 四、项目总结
 整体项目实现了一个基本播放器应有的功能，但个别功能还有待完善，比如收藏列表本地持续化存储、登录注册未做真正限制等。觉得项目不错的，可以给个Star，谢谢！
