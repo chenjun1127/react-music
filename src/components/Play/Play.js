@@ -14,7 +14,7 @@ import Loading from '../../components/Common/Loading';
 import noData from '../../static/images/nodata.png';
 import svg1 from '../../static/css/svg/svg-1.svg';
 import svg2 from '../../static/css/svg/svg-2.svg';
-
+import InputRange from 'react-input-range';
 export default class Player extends Component {
     static defaultProps = {
         background: '-webkit-linear-gradient(#e9203d, #e9203d) no-repeat, #ddd',
@@ -66,9 +66,9 @@ export default class Player extends Component {
         this.props.musicInfoActions.control({playing: !this.props.control.playing});
     }
 
-    onChange(e) {
+    onChange(value) {
         this.props.musicInfoActions.control({playing: true});
-        this.props.audio.player.seekTo(parseFloat(e.target.value));
+        this.props.audio.player.seekTo(parseFloat(value/100));
     }
 
     showMusicList() {
@@ -217,7 +217,7 @@ export default class Player extends Component {
             const albumImg = currentSong.imgUrl.replace(/\{size\}/g, 400);
             const currentTime = formatTime(this.props.progress.currentTime);
             const duration = formatTime(localStore.getItem('duration'));
-            const percentage = this.props.progress.percentage;
+            const percentage = this.props.progress.percentage*100;
             const rangeStyle = percentage * 100 + '%' + ' ' + '100%';
             if (currentSong.error) {
                 return (
@@ -263,11 +263,10 @@ export default class Player extends Component {
                                     </div>
                                 </Slider>
                                 <div className="components-player-control">
-                                    <div className="player-time">
+                                    <div className="player-time-box">
                                         <div className="time_left">{currentTime}</div>
-                                        <div className="player-range">
-                                            <input type='range' min={0} max={1} step='any' value={percentage || '0'}
-                                                   style={{background: this.props.background, backgroundSize: rangeStyle}} onChange={this.onChange}/>
+                                        <div className="player-range">                                            
+                                            <InputRange  maxValue={100} minValue={0} value={percentage || 0} onChange={value => this.onChange(value)} />
                                         </div>
                                         <div className="time_right">{duration}</div>
                                     </div>

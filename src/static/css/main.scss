@@ -594,19 +594,19 @@ body {
     @include flexDirection(column);
     @include justify-content(space-around);
 
-    .player-time {
+    .player-time-box {
         font-family: 'PingFang SC';
         @include flexBox;
         @include justify-content(center);
         @include align-items(center);
         padding: 10px 0;
         .time_left {
-            padding-top: 10px;
+            padding-top: 6px;
             padding-right: 10px;
             color: $whiteColor;
         }
         .time_right {
-            padding-top: 10px;
+            padding-top: 6px;
             padding-left: 10px;
             text-align: right;
             color: $whiteColor;
@@ -616,7 +616,7 @@ body {
         }
     }
     .player-btn {
-        @extend .player-time;
+        @extend .player-time-box;
         @include justify-content(space-between);
         i {
             color: #fff;
@@ -966,3 +966,4 @@ body {
 .translateY-0 {
     @include transform(translateY(0%));
 }
+
