@@ -44,7 +44,8 @@ module.exports = {
             use:[{
                 loader: 'url-loader',
                 options: {
-                    limit: 8192 // 小于8KB 使用base64格式图片
+                    limit: 8192, // 小于8KB 使用base64格式图片
+                    name:"images/[hash:8].[name].[ext]"
                 }
             }]
         }, {

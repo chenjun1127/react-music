@@ -4,7 +4,7 @@
  * tips:开发环境下面使用了browserHistory，打包上线的时候需要服务器进行配置;
  */
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Home from '../containers/Home/Index';
 import Login from '../containers/User/Login';
 import Album from '../containers/Home/Album';

@@ -12,12 +12,12 @@ module.exports = {
     // devtool: 'eval-source-map',
     entry: {
         app: path.resolve(SRC_PATH, 'index.js'),
-        verdor: Object.keys(pkg.dependencies)
+        // verdor: Object.keys(pkg.dependencies)
     },
     output: {
         path: BUILD_PATH,
         filename: 'js/[name].[hash:5].js',
-
+        publicPath: './'
     },
     resolve: {
         extensions: [".js", ".json", ".jsx", ".css", ".scss"],
@@ -52,7 +52,8 @@ module.exports = {
             use: [{
                 loader: 'url-loader',
                 options: {
-                    limit: 8192 // 小于8KB 使用base64格式图片
+                    limit: 8192, // 小于8KB 使用base64格式图片
+                    name:"images/[hash:5].[name].[ext]"
                 }
             }]
         }, {
@@ -90,7 +91,7 @@ module.exports = {
         // 提供公共代码
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'js/[name].[hash:5].js'
+            // filename: 'js/[name].[hash:5].js'
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
