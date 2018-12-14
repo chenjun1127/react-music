@@ -2,7 +2,7 @@
 
 
 ### 一、简介
-该项目是基于React全家桶开发的一个音乐播放器，技术栈采用：Webpack + React + React-redux + React-router + Node + Sass + Es6 + Localstorage+ Css3，基本音乐API使用http-proxy酷狗音乐的，在此感谢酷狗音乐！项目涉及的知识点非常广泛，基于react全家桶技术都有使用，原创独立开发精品之作，具有很好的参考价值！（项目已打包上线，哈哈，这里就不放链接了！！）
+该项目是基于React全家桶开发的一个音乐播放器，技术栈采用：Webpack + React + React-redux + React-router + Node + Sass + Es6 + Localstorage+ Css3，基本音乐API使用http-proxy酷狗音乐的，在此感谢酷狗音乐！项目涉及的知识点非常广泛，基于react全家桶技术都有使用，原创独立开发精品之作，具有很好的参考价值！（项目已打包上线，哈哈，这里就不放链接了！！！）
 
 1、项目依赖基本核心版本：
 * react: "^15.6.1",
