@@ -145,4 +145,6 @@ npm start or yarn start
 
 Tips：在npm install or yarn install 的时候，请确保网络良好，如个别依赖安装不了，请设置淘宝镜像为安装源；
 
-如有问题：请 Issue 或联系QQ：402074940
+如有问题：请 Issue 或联系QQ：402074940。
+
+当前版本如运行不成功，可看最新 [react-music-v2.0](https://github.com/chenjun1127/react-music-v2.0) 版本。
